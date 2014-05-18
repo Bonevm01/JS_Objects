@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Group objects</title>
+    <style>
+        p {
+            color: red;
+            font-size: 20px;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <p>Please enter F12 and see the result of my code</p>
+    <script>
+        // Task 6 - Write a function that groups an array of persons by age, first or last name. 
+        // The function must return an associative array, with keys -
+        // the groups, and values -arrays with persons in this groups
+        // Use function overloading (i.e. just one function)
+
+        var myArr = [
+        { fname: "Angel", lname: "Ivanov", age: 18 },
+        { fname: "Georgi", lname: "Georgiev", age: 30 },
+        { fname: "Petar", lname: "Petrov", age: 18 },
+        { fname: "Angel", lname: "Angelov", age: 18 },
+        { fname: "Angel", lname: "Petrov", age: 30 },
+        { fname: "Petar", lname: "Ivanov", age: 30 },
+        { fname: "Georgi", lname: "Angelov", age: 18 },
+        { fname: "Petar", lname: "Georgiev", age: 30 },
+        ];
+
+        function group(array, key) {
+            var result = {};
+            for (var i in array) {
+                var tempObj = array[i];
+                if (result[tempObj[key]]) {
+                    result[tempObj[key]].push(tempObj);
+                }
+                else {
+                    result[tempObj[key]] = new Array();
+                    result[tempObj[key]].push(tempObj);
+                }
+            }
+
+            return result;
+        }
+
+        var groupedByFName = group(myArr, 'fname');
+        var groupedByLName = group(myArr, 'lname');
+        var groupedByAge = group(myArr, 'age');
+
+        console.log(groupedByAge);
+        console.log(groupedByFName);
+        console.log(groupedByLName);
+
+    </script>
+</body>
+</html>

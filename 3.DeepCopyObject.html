@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Deep copy object</title>
+    <style>
+        p{
+            color:red;
+            font-size:20px;
+            text-decoration:underline;
+        }
+    </style>
+</head>
+<body>
+    <p>Please enter F12 and see the result of my code</p>
+    <script>
+        // Task 3 - Write a function that makes a deep copy of an object
+        // The function should work for both primitive and reference types
+
+        var original = {
+            fname: "Pesho",
+            lname: "Todorov",
+            mark: {
+                Biologi: 5.50,
+                History: 5.00,
+                Literature: 4.50
+            },
+            age: 28,
+            toString: function () {
+                return "fname: " + this.fname + ', lname: ' + this.lname + ', age: ' + this.age + ' marks: Biology: ' + this.mark.Biologi + ', History: ' + this.mark.History + ', Literature: ' + this.mark.Literature;
+            }
+        }
+
+        var deepCopyObjet = function (source) {
+            var temp = new Object();
+
+            for (var i in source) {
+                if (typeof source[i] == 'object') {
+                    temp[i] = deepCopyObjet(source[i])
+                }
+                else {
+                    temp[i] = source[i];
+                }
+            }
+
+            return temp;
+        }
+
+        var copy = deepCopyObjet(original);
+
+        console.log('Original->' + original);
+        console.log('Copy->'+copy)
+
+
+        original.fname = 'Misho';
+        original.mark.History = 5.50;
+
+        console.log("After changing original's fname and History mark");
+        console.log();
+
+        console.log('Original->' + original);
+        console.log('Copy->' + copy)
+
+    </script>
+</body>
+</html>

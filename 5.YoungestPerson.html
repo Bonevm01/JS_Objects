@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Find Youngest Person</title>
+    <style>
+        p {
+            color: red;
+            font-size: 20px;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <p>Please enter F12 and see the result of my code</p>
+    <script>
+        // Task 5 - Write a function that finds the youngest person in a given array of persons and prints his/hers full name
+        var arr = [
+        { fname: "Ivan", lname: "Ivanov", age: 19 },
+        { fname: "Georgi", lname: "Georgiev", age: 30 },
+        { fname: "Petar", lname: "Petrov", age: 18 },
+        { fname: "Angel", lname: "Angelov", age: 28 }
+        ];
+
+        function findYoungest(array) {
+            var minAge = 100;
+            var index = -1;
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].age < minAge) {
+                    minAge = arr[i].age;
+                    index = i;
+                }
+            }
+
+            console.log('The youngest person is: ' +arr[index].fname + ' ' + arr[index].lname + ' ' + arr[index].age);
+        }
+
+        findYoungest(arr);
+
+    </script>
+</body>
+</html>
